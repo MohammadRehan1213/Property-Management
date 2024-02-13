@@ -1,6 +1,8 @@
 const mongoose = require("mongoose"); // Erase if already required
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
+const validator = require('validator')
+
 var userSchema = new mongoose.Schema(
     {
         firstname: {
