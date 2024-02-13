@@ -1,7 +1,6 @@
 const mongoose = require("mongoose"); // Erase if already required
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
-// Declare the Schema of the Mongo model
 var userSchema = new mongoose.Schema(
     {
         firstname: {
@@ -16,6 +15,12 @@ var userSchema = new mongoose.Schema(
             type: String,
             required: true,
             unique: true,
+            validate: {
+                validator: validator.isEmail,
+                Message: "Invalid email format"
+            }
+
+
         },
         mobile: {
             type: String,
