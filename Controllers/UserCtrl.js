@@ -50,7 +50,6 @@ const loginUser = asyncHandler(async (req, res) => {
 
 const loginAdmin = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
-    // check if user exists or not
 
     const findAdmin = await User.findOne({ email });
     if (!findAdmin) {
