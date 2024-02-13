@@ -20,7 +20,6 @@ const loginAdmin = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
     const findSuperAdmin = await User.findOne({ email, role: "admin" });
-
     const findUser = await User.findOne({ email, role: "user" });
 
     let user;
