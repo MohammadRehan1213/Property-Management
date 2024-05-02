@@ -6,7 +6,7 @@ const {
     loginAdmin,
     SignupUser
 } = require("../Controllers/UserCtrl");
-const { uploadSingleImageToCloudinary } = require('../Middewares/singleImgUpload')
+const  uploadSingleImageToCloudinary = require('../Middewares/singleImgUpload')
 const router = express.Router();
 
 router.post("/login", loginAdmin);
