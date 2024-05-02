@@ -5,17 +5,19 @@ const { generateToken } = require("../config/jwtToken");
 const { generateRefreshToken } = require("../config/refreshtoken");
 
 const SignupUser = asyncHandler(async (req, res) => {
-
+    const img = req.uploadedImageUrl
     const email = req.body.email;
     const findUser = await User.findOne({ email: email });
     if (!findUser) {
-        const newUser = await User.create(req.body);
+        const newUser = await User.create({
+            image: img,
+            ...req.body
+        });
         res.json(newUser);
     } else {
         throw new Error("User Already Exists");
     }
 });
-
 const loginAdmin = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
