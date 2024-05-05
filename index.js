@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use("/api", require('./Routers/UserRoute'));
+app.use("/api/packageoffer", require('./Routers/PackgeOfferRoute'));
 
 app.use(notFound);
 app.use(errorHandler);
