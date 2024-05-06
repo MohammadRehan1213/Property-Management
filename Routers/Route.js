@@ -1,6 +1,6 @@
 const express = require("express");
 const { getpaginate, Getdata, Postdata, Putdata, DeleteData, getdata } =
-    require('../Controllers/PackgeOfferCtrl')
+    require('../Controllers/Ctrl')
 const router = express.Router();
 const {UserMiddleware} = require('../Middewares/userMiddlewares')
 router.get("/", getdata)

@@ -21,6 +21,8 @@ app.use(cookieParser());
 
 app.use("/api", require('./Routers/UserRoute'));
 app.use("/api/packageoffer", require('./Routers/PackgeOfferRoute'));
+app.use("/api/data", require('./Routers/Route'));
+
 
 app.use(notFound);
 app.use(errorHandler);
