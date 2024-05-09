@@ -12,7 +12,6 @@ const department = mongoose.Schema({
     },
     offertestPackage   : {
         type: [],
-        required: true,
     },
     offerPrice  : {
         type: String,
