@@ -45,4 +45,8 @@ const DeleteData = async (req, res) => {
     }
 }
 
-module.exports = {getdata, Getdata, Postdata, Putdata, DeleteData };   
+const getallpackgebyuserid = (async (req, res) => {
+    const data = await db.findById({ userId: req.params.userId })
+    res.json(data)
+})
+module.exports = { getdata, Getdata, Postdata, Putdata, DeleteData ,getallpackgebyuserid};   

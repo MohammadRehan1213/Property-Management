@@ -97,6 +97,7 @@ const loginAdmin = asyncHandler(async (req, res) => {
     }
 });
 
+
 module.exports = {
     loginAdmin,
     SignupUser

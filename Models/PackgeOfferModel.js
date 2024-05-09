@@ -16,7 +16,8 @@ const department = mongoose.Schema({
     offerPrice  : {
         type: String,
         required: true,
-    }
+    },
+    userId:mongoose.Schema.Types.ObjectId
 },
     {
         timestamps: true,
