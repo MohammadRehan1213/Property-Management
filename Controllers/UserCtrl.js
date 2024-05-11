@@ -100,7 +100,7 @@ const loginAdmin = asyncHandler(async (req, res) => {
 
 const getsingleuser = async (req, resp) => {
     try {
-        const result = await User.find({ _id: req.params.id })
+        const result = await User.find()
         resp.send(result)
     } catch (error) {
         resp.status(404).json(error.message)
