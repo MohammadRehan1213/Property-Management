@@ -1,5 +1,6 @@
 const User = require('../Models/UserModel')
 const asyncHandler = require("express-async-handler");
+const bcrypt = require('bcrypt');
 
 const { generateToken } = require("../config/jwtToken");
 const { generateRefreshToken } = require("../config/refreshtoken");
@@ -41,7 +42,7 @@ const loginAdmin = asyncHandler(async (req, res) => {
         const refreshToken = generateRefreshToken(user._id);
 
         if (role === "admin") {
-            updateUser = await User.findByIdAndUpdate(
+            updateuser = await User.findByIdAndUpdate(
                 user._id,
                 {
                     refreshToken
@@ -49,7 +50,7 @@ const loginAdmin = asyncHandler(async (req, res) => {
                 { new: true }
             );
         } else if (role === "user") {
-            updateUser = await User.findByIdAndUpdate(
+            updateuser = await User.findByIdAndUpdate(
                 user._id,
                 {
                     refreshToken
@@ -97,8 +98,50 @@ const loginAdmin = asyncHandler(async (req, res) => {
     }
 });
 
+const getsingleuser = async (req, resp) => {
+    try {
+        const result = await User.find({ _id: req.params.id })
+        resp.send(result)
+    } catch (error) {
+        resp.status(404).json(error.message)
+
+    }
+}
+
+
+
+const updateUser = async (req, res) => {
+    try {
+        const { password, ...updateData } = req.body;
+        const img = req.uploadedImageUrl
+
+        // Check if password is provided and it's a non-empty string
+        if (password && typeof password === 'string' && password.trim().length > 0) {
+            const hashedPassword = await bcrypt.hash(password, 10); // Hashing the password
+            updateData.password = hashedPassword; // Update the password field in updateData
+        }
+
+        let result = await User.findByIdAndUpdate(
+            { _id: req.params.id },
+            {
+                $set: {
+                    image: img,
+                    ...updateData
+                }
+            },
+            { new: true }
+        );
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(404).json(error.message);
+    }
+};
+
+
 
 module.exports = {
     loginAdmin,
-    SignupUser
+    SignupUser,
+    getsingleuser,
+    updateUser
 }

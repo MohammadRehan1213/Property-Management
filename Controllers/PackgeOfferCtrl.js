@@ -23,16 +23,19 @@ const Postdata = async (req, res) => {
 
 const Putdata = async (req, res) => {
     try {
-        let result = await db.updateOne(
+        let result = await db.findByIdAndUpdate(
             { _id: req.params.id },
             {
                 $set: req.body
-            })
+            },
+            { new: true }
+        );
         res.status(200).json(result);
     } catch (error) {
-        res.status(404).json(error.message)
+        res.status(404).json(error.message);
     }
-}
+};
+
 const DeleteData = async (req, res) => {
     try {
         let result = await db.deleteOne({ _id: req.params.id },
@@ -49,4 +52,4 @@ const getallpackgebyuserid = (async (req, res) => {
     const data = await db.findById({ userId: req.params.userId })
     res.json(data)
 })
-module.exports = { getdata, Getdata, Postdata, Putdata, DeleteData ,getallpackgebyuserid};   
+module.exports = { getdata, Getdata, Postdata, Putdata, DeleteData, getallpackgebyuserid };   

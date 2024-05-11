@@ -8,7 +8,7 @@ router.get("/:id", Getdata)
 router.get("/getpackageuser/:userId", getallpackgebyuserid)
 
 router.post("/",UserMiddleware, Postdata)
-router.put("/:id", Putdata)
+router.put("/:id",UserMiddleware, Putdata)
 router.delete("/:id",UserMiddleware, DeleteData)
 
 module.exports = router;
