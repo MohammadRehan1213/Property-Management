@@ -8,12 +8,13 @@ const {
     getsingleuser,
     updateUser
 } = require("../Controllers/UserCtrl");
-const  uploadSingleImageToCloudinary = require('../Middewares/singleImgUpload')
+const  uploadCloudinary = require('../Middewares/multipleImgUplaod')
+const uploadSingleImageToCloudinary =require("../Middewares/singleImgUpload")
 const router = express.Router();
 
 router.post("/login", loginAdmin);
 router.get("/user/:id", getsingleuser);
-router.put("/register/:id",upload.single('image'), uploadSingleImageToCloudinary,  updateUser);
-router.post("/register", upload.single('image'), uploadSingleImageToCloudinary, SignupUser);
+router.put("/register/:id", upload.single('image'), uploadSingleImageToCloudinary, updateUser);
+router.post("/register",upload.array('image',5), uploadCloudinary, SignupUser);
 
 module.exports = router;

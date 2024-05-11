@@ -17,11 +17,7 @@ const uploadCloudinary = async (req, res, next) => {
             const dataUrl = `data:${file.mimetype};base64,${file.buffer.toString('base64')}`;
             const result = await cloudinary.uploader.upload(dataUrl);
 
-            uploadedImages.push({
-                url: result.secure_url,
-                asset_id: result.asset_id,
-                public_id: result.public_id,
-            });
+            uploadedImages.push(result.secure_url);
         }
 
         req.uploadedImages = uploadedImages; // Store uploaded image URLs in request object

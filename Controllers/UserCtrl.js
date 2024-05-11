@@ -6,7 +6,7 @@ const { generateToken } = require("../config/jwtToken");
 const { generateRefreshToken } = require("../config/refreshtoken");
 
 const SignupUser = asyncHandler(async (req, res) => {
-    const img = req.uploadedImageUrl
+    const img =   req.uploadedImages
     const email = req.body.email;
     const findUser = await User.findOne({ email: email });
     if (!findUser) {
