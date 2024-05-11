@@ -11,7 +11,7 @@ const SignupUser = asyncHandler(async (req, res) => {
     const findUser = await User.findOne({ email: email });
     if (!findUser) {
         const newUser = await User.create({
-            image: img,
+            images: img,
             ...req.body
         });
         res.json(newUser);

@@ -33,7 +33,7 @@ var userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        image: {
+        images: {
             type: [],
             required: true,
         },
