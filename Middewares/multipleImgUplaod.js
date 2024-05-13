@@ -23,7 +23,7 @@ const uploadCloudinary = async (req, res, next) => {
         req.uploadedImages = uploadedImages; // Store uploaded image URLs in request object
         next(); // Move to the next middleware/controller
     } catch (error) {
-        res.status(500).json("file was not uplaoded in backend", { error: error.message });
+        res.status(500).json(error.message);
     }
 };
 
