@@ -24,6 +24,9 @@ var userSchema = new mongoose.Schema(
         images: {
             type: []
         },
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+        },
         role: {
             type: String,
             default: "user"

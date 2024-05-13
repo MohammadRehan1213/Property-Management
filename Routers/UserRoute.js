@@ -6,7 +6,8 @@ const {
     loginAdmin,
     SignupUser,
     getsingleuser,
-    updateUser
+    updateUser,
+    getuseridbyPackges
 } = require("../Controllers/UserCtrl");
 const  uploadCloudinary = require('../Middewares/multipleImgUplaod')
 const uploadSingleImageToCloudinary =require("../Middewares/singleImgUpload")
@@ -16,5 +17,6 @@ router.post("/login", loginAdmin);
 router.get("/user/:id", getsingleuser);
 router.put("/register/:id", upload.single('image'), uploadSingleImageToCloudinary, updateUser);
 router.post("/register",upload.array('images'), uploadCloudinary, SignupUser);
+router.get("/getpackagesbyuser/:userId", getuseridbyPackges);
 
 module.exports = router;
