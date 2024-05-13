@@ -15,6 +15,6 @@ const router = express.Router();
 router.post("/login", loginAdmin);
 router.get("/user/:id", getsingleuser);
 router.put("/register/:id", upload.single('image'), uploadSingleImageToCloudinary, updateUser);
-router.post("/register",upload.single('image'), uploadSingleImageToCloudinary, SignupUser);
+router.post("/register",upload.array('images'), uploadCloudinary, SignupUser);
 
 module.exports = router;

@@ -6,8 +6,7 @@ const { generateToken } = require("../config/jwtToken");
 const { generateRefreshToken } = require("../config/refreshtoken");
 
 const SignupUser = asyncHandler(async (req, res) => {
-    const img =   req.uploadedImageUrl
-    const email = req.body.email;
+    const img =   req.uploadedImages
     const newUser = await User.create({
         images: img,
         ...req.body
