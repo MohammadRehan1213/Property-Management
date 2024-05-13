@@ -7,35 +7,22 @@ var userSchema = new mongoose.Schema(
     {
         firstname: {
             type: String,
-            required: true,
         },
         lastname: {
             type: String,
-            required: true,
         },
         email: {
             type: String,
-            required: true,
-            unique: true,
-            validate: {
-                validator: validator.isEmail,
-                Message: "Invalid email format"
-            }
-
 
         },
         mobile: {
             type: String,
-            required: true,
-            unique: true,
         },
         password: {
             type: String,
-            required: true,
         },
         images: {
-            type: [],
-            required: true,
+            type: []
         },
         role: {
             type: String,

@@ -14,7 +14,7 @@ const uploadSingleImageToCloudinary = async (req, res, next) => {
 
         const dataUrl = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
         const result = await cloudinary.uploader.upload(dataUrl);
-
+     
         req.uploadedImageUrl = result.secure_url
 
         next();
