@@ -17,7 +17,14 @@ const department = mongoose.Schema({
         type: String,
         required: true,
     },
-    userId:mongoose.Schema.Types.ObjectId
+    userId:mongoose.Schema.Types.ObjectId,
+    country   : {
+        type: String,    },
+    state  : {
+        type: String,    },
+    city   : {
+        type: String,
+    },
 },
     {
         timestamps: true,
