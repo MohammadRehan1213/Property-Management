@@ -9,14 +9,14 @@ const {
     updateUser,
     getuseridbyPackges
 } = require("../Controllers/UserCtrl");
-const  uploadCloudinary = require('../Middewares/multipleImgUplaod')
-const uploadSingleImageToCloudinary =require("../Middewares/singleImgUpload")
+const uploadCloudinary = require('../Middewares/multipleImgUplaod')
+const uploadSingleImageToCloudinary = require("../Middewares/singleImgUpload")
 const router = express.Router();
 
 router.post("/login", loginAdmin);
 router.get("/user/:id", getsingleuser);
-router.put("/register/:id", upload.single('image'), uploadSingleImageToCloudinary, updateUser);
-router.post("/register",upload.array('images'), uploadCloudinary, SignupUser);
+router.put("/register/:id", upload.single('images'), uploadSingleImageToCloudinary, updateUser);
+router.post("/register", upload.array('images'), uploadCloudinary, SignupUser);
 router.get("/getpackagesbyuser/:userId", getuseridbyPackges);
 
 module.exports = router;
