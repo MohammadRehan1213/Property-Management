@@ -14,9 +14,6 @@ var userSchema = new mongoose.Schema(
         email: {
             type: String,
         },
-        mobile: {
-            type: String,
-        },
         password: {
             type: String,
         },
