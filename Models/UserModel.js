@@ -30,6 +30,9 @@ var userSchema = new mongoose.Schema(
             type: String,
             default: "user"
         },
+        mobileNumber: {
+            type: String,
+        },
     },
     {
         timestamps: true,
